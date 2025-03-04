@@ -1,0 +1,34 @@
+name: 'Mogenius release Action'
+description: 'Automate your release process with mogenius'
+
+# Declare inputs
+inputs:
+  kind:
+    description: 'The kind that should be changed'
+    required: false
+    default: 'Deployment'
+  namespace:
+    description: 'The namespace your resource lives in'
+    required: true
+  resourceName:
+    description: 'The name of the resource you want to change'
+    required: true
+  containerName:
+    description: 'The name of the container you want to change'
+    required: true
+  image:
+    description: 'The image you want to change to'
+    required: true
+  token:
+    description: 'The API key for the mogenius API'
+    required: true
+
+# Declare outputs
+# outputs:
+#   image:
+#     description: 'The image that was set'
+
+# Declare environment and main file
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

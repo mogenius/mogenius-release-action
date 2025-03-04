@@ -1,0 +1,36 @@
+{
+  "name": "mogenius-release-action",
+  "version": "1.0.0",
+  "description": "Github Action to automate your release-cycle using mogenius",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "axios": "^1.8.1",
+    "before-after-hook": "^2.2.3",
+    "deprecation": "^2.3.1",
+    "once": "^1.4.0",
+    "tunnel": "^0.0.6",
+    "undici": "^5.28.5",
+    "universal-user-agent": "^6.0.1",
+    "wrappy": "^1.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx ncc build index.js -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mogenius/mogenius-release-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mogenius/mogenius-release-action/issues"
+  },
+  "homepage": "https://github.com/mogenius/mogenius-release-action#readme",
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.3"
+  }
+}
