@@ -9,7 +9,7 @@ With this action you can release a new version of your application to your kuber
 4. Run your workflow to release a new version of your application
 
 ## Raw example
-```
+```yaml
 - name: Release with mogenius
   uses: mogenius/mogenius-release-action@v1
   with:
@@ -23,7 +23,7 @@ With this action you can release a new version of your application to your kuber
 
 
 ## Example with env vars
-```
+```yaml
 - name: Release with mogenius
   uses: mogenius/mogenius-release-action@v1
   with:
@@ -33,4 +33,18 @@ With this action you can release a new version of your application to your kuber
     resourceName: ${{ env.RESOURCE_NAME }}
     containerName: ${{ env.CONTAINER_NAME }}
     token: ${{ secrets.MOGENIUS_TOKEN }}
+```
+
+## Curl Example
+```bash
+curl -X POST "https://platform-api.mogenius.com/cluster/workload/admin/set-image" \
+-H "Authorization: Bearer YOUR_MOGENIUS_API_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+  "kind": "Deployment",
+  "namespace": "default",
+  "resourceName": "my-web-app",
+  "containerName": "nginx",
+  "image": "ghcr.io/myorg/nginx:1.2.3"
+}'
 ```
