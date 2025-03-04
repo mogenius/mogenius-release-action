@@ -7,7 +7,7 @@ With a mogenius API token you can simply change the imageName of your kubernetes
   uses: mogenius/mogenius-release-action@edb6c3024eafef28dc83f1e70f1c16e62a0e321f
   with:
     image: "ghcr.io/myorg/nginx:1.2.3"
-    resourceType: Deployment
+    kind: Deployment
     namespace: default
     resourceName: web-app
     containerName: nginx
@@ -19,7 +19,7 @@ With a mogenius API token you can simply change the imageName of your kubernetes
   uses: mogenius/mogenius-release-action@edb6c3024eafef28dc83f1e70f1c16e62a0e321f
   with:
     image: "${{ env.IMAGE_NAME }}:${{ env.VERSION }}"
-    resourceType: ${{ env.RESOURCE_TYPE }}
+    kind: ${{ env.RESOURCE_TYPE }}
     namespace: ${{ env.NAMESPACE_NAME }}
     resourceName: ${{ env.RESOURCE_NAME }}
     containerName: ${{ env.CONTAINER_NAME }}
