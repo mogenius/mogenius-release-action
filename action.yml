@@ -4,8 +4,8 @@ description: 'Automate your release process with mogenius'
 # Declare inputs
 inputs:
   kind:
-    description: 'The kind that should be changed'
-    required: false
+    description: 'Kubernetes Resource Type. Valid types are [Deployment | Daemonset | Statefulset | Replicaset]'
+    required: true
     default: 'Deployment'
   namespace:
     description: 'The namespace your resource lives in'
