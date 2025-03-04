@@ -3,6 +3,10 @@ description: 'Automate your release process with mogenius'
 
 # Declare inputs
 inputs:
+  dev:
+    description: 'Whether to use the dev API or not'
+    required: false
+    default: 'false'
   kind:
     description: 'Kubernetes Resource Type. Valid types are [Deployment | Daemonset | Statefulset | Replicaset]'
     required: true
@@ -23,12 +27,6 @@ inputs:
     description: 'The API key for the mogenius API'
     required: true
 
-# Declare outputs
-# outputs:
-#   image:
-#     description: 'The image that was set'
-
-# Declare environment and main file
 runs:
   using: 'node20'
   main: 'dist/index.js'

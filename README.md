@@ -1,7 +1,14 @@
 # mogenius-release-action
 
-With a mogenius API token you can simply change the imageName of your kubernetes resource:
+With this action you can release a new version of your application to your kubernetes cluster using mogenius.
 
+## Setp-by-step guide:
+1. Create a API token in mogenius
+2. Add the action to your workflow
+3. Set the required inputs (keep in mind that the apitoken should be stored in the repository secrets)
+4. Run your workflow to release a new version of your application
+
+## Raw example
 ```
 - name: Release with mogenius
   uses: mogenius/mogenius-release-action@v1
@@ -14,6 +21,8 @@ With a mogenius API token you can simply change the imageName of your kubernetes
     token: ${{ secrets.MOGENIUS_TOKEN }}
 ```
 
+
+## Example with env vars
 ```
 - name: Release with mogenius
   uses: mogenius/mogenius-release-action@v1
