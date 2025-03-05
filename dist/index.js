@@ -40054,8 +40054,7 @@ try {
     image: image,
   };
 
-  const url =
-    "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
+  var url = "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
   if (dev === "true") {
     url = "https://platform-api.dev.mogenius.com/cluster/workload/admin/set-image";
   }
@@ -40083,7 +40082,7 @@ try {
     });
 } catch (error) {
   core.setFailed(JSON.stringify(error));
-  console.log(JSON.stringify(error));
+  console.log("General error: " + JSON.stringify(error));
 }
 
 module.exports = __webpack_exports__;

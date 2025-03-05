@@ -19,8 +19,7 @@ try {
     image: image,
   };
 
-  const url =
-    "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
+  var url = "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
   if (dev === "true") {
     url = "https://platform-api.dev.mogenius.com/cluster/workload/admin/set-image";
   }
@@ -36,7 +35,6 @@ try {
       console.log("🚀 Your ", kind, " image has successfully been updated to '", image, "'.");
     })
     .catch((err) => {
-      console.log("Error: ", err);
       if (err.response && err.response.status === 401) {
         var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
         console.log(errMsg);
@@ -49,5 +47,5 @@ try {
     });
 } catch (error) {
   core.setFailed(JSON.stringify(error));
-  console.log(JSON.stringify(error));
+  console.log("General error: " + JSON.stringify(error));
 }
