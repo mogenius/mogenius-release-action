@@ -40067,8 +40067,16 @@ try {
         "Content-Type": "application/json",
       },
     })
+    .then((response) => {
+      console.log("🚀 Your ", kind, " image has successfully been updated to '", image, "'.");
+    })
     .catch((err) => {
-      core.setFailed(err);
+      if (err.response && err.response.status === 401) {
+        const errMsg = 'Your API token is invalid. It might have expired or the scope might be insufficient.'
+        console.log(errMsg);
+        core.setFailed(errMsg + " Error: " + err.message);
+      }
+      core.setFailed(err.message || "Request failed without a specific error message.");
     });
 } catch (error) {
   // Handle errors and indicate failure
