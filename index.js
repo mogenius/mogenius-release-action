@@ -36,6 +36,7 @@ try {
       console.log("🚀 Your ", kind, " image has successfully been updated to '", image, "'.");
     })
     .catch((err) => {
+      console.log("Error: ", err);
       if (err.response && err.response.status === 401) {
         var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
         console.log(errMsg);
