@@ -38,13 +38,15 @@ try {
     .catch((err) => {
       if (err.response && err.response.status === 401) {
         var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
-        console.log()
-        core.setFailed(errMsg + " Error: " + err.message);
+        console.log(errMsg);
+        core.setFailed(errMsg + "\nError: " + JSON.stringify(err));
       }
-      core.setFailed(err.message || "Request failed without a specific error message.");
-      console.log(JSON.stringify(err));
+      core.setFailed(JSON.stringify(err) || "Request failed without a specific error message.");
+      if (err) {
+        console.log(JSON.stringify(err));
+      }
     });
 } catch (error) {
-  core.setFailed(JSON.stringify(err));
-  console.log(JSON.stringify(err));
+  core.setFailed(JSON.stringify(error));
+  console.log(JSON.stringify(error));
 }
