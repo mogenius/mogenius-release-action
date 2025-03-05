@@ -40079,17 +40079,20 @@ try {
     })
     .catch((err) => {
       if (err.response && err.response.status === 401) {
-        var errMsg =
-          "Your API token is invalid. It might have expired or the scope might be insufficient.";
+        var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
         console.log(errMsg);
         core.setFailed(errMsg);
-      }
-      if (err.response) {
-        core.setFailed(
-          JSON.stringify(err.response.Data) ||
-          "Request failed without a specific error message."
-        );
-        console.log(JSON.stringify(err.response.Data));
+      } else if (err.response) {
+        // Access the error message correctly
+        const errorData = err.response.data;
+        const errorMsg = JSON.stringify(errorData) || "Request failed without a specific error message.";
+        core.setFailed(errorMsg);
+        console.log(errorMsg);
+      } else {
+        // Handle errors without response (e.g., network issues)
+        const errorMsg = "An error occurred during the request: " + err.message;
+        core.setFailed(errorMsg);
+        console.log(errorMsg);
       }
     });
 } catch (error) {
