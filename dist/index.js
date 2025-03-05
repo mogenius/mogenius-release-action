@@ -40055,9 +40055,9 @@ try {
   };
 
   const url =
-    "https://platform-api.dev.mogenius.com/cluster/workload/admin/set-image";
+    "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
   if (dev === "true") {
-    url = "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
+    url = "https://platform-api.dev.mogenius.com/cluster/workload/admin/set-image";
   }
 
   axios
@@ -40072,15 +40072,16 @@ try {
     })
     .catch((err) => {
       if (err.response && err.response.status === 401) {
-        const errMsg = 'Your API token is invalid. It might have expired or the scope might be insufficient.'
-        console.log(errMsg);
+        var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
+        console.log()
         core.setFailed(errMsg + " Error: " + err.message);
       }
       core.setFailed(err.message || "Request failed without a specific error message.");
+      console.log(JSON.stringify(err));
     });
 } catch (error) {
-  // Handle errors and indicate failure
-  core.setFailed(error.message);
+  core.setFailed(JSON.stringify(err));
+  console.log(JSON.stringify(err));
 }
 
 module.exports = __webpack_exports__;

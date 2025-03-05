@@ -37,7 +37,8 @@ try {
     })
     .catch((err) => {
       if (err.response && err.response.status === 401) {
-        const errMsg = 'Your API token is invalid. It might have expired or the scope might be insufficient.'
+        var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
+        console.log()
         core.setFailed(errMsg + " Error: " + err.message);
       }
       core.setFailed(err.message || "Request failed without a specific error message.");
