@@ -40054,9 +40054,11 @@ try {
     image: image,
   };
 
-  var url = "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
+  var url =
+    "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
   if (dev === "true") {
-    url = "https://platform-api.dev.mogenius.com/cluster/workload/admin/set-image";
+    url =
+      "https://platform-api.dev.mogenius.com/cluster/workload/admin/set-image";
   }
 
   axios
@@ -40067,17 +40069,27 @@ try {
       },
     })
     .then((response) => {
-      console.log("🚀 Your ", kind, " image has successfully been updated to '", image, "'.");
+      console.log(
+        "🚀 Your ",
+        kind,
+        " image has successfully been updated to '",
+        image,
+        "'."
+      );
     })
     .catch((err) => {
       if (err.response && err.response.status === 401) {
-        var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
+        var errMsg =
+          "Your API token is invalid. It might have expired or the scope might be insufficient.";
         console.log(errMsg);
-        core.setFailed(errMsg + "\nError: " + JSON.stringify(err));
+        core.setFailed(errMsg + "\nError: " + JSON.stringify(err.response));
       }
-      core.setFailed(JSON.stringify(err) || "Request failed without a specific error message.");
-      if (err) {
-        console.log(JSON.stringify(err));
+      if (err.response) {
+        core.setFailed(
+          JSON.stringify(err.response) ||
+          "Request failed without a specific error message."
+        );
+        console.log(JSON.stringify(err.response));
       }
     });
 } catch (error) {
