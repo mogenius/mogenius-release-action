@@ -40082,14 +40082,14 @@ try {
         var errMsg =
           "Your API token is invalid. It might have expired or the scope might be insufficient.";
         console.log(errMsg);
-        core.setFailed(errMsg + "\nError: " + JSON.stringify(err.response));
+        core.setFailed(errMsg);
       }
       if (err.response) {
         core.setFailed(
-          JSON.stringify(err.response) ||
+          JSON.stringify(err.response.Data) ||
           "Request failed without a specific error message."
         );
-        console.log(JSON.stringify(err.response));
+        console.log(JSON.stringify(err.response.Data));
       }
     });
 } catch (error) {
