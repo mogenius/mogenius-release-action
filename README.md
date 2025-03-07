@@ -18,6 +18,7 @@ With this action you can release a new version of your application to your kuber
     namespace: default
     resourceName: web-app
     containerName: nginx
+    apiKind: workspace
     token: ${{ secrets.MOGENIUS_TOKEN }}
 ```
 
@@ -32,6 +33,7 @@ With this action you can release a new version of your application to your kuber
     namespace: ${{ env.NAMESPACE_NAME }}
     resourceName: ${{ env.RESOURCE_NAME }}
     containerName: ${{ env.CONTAINER_NAME }}
+    apiKind: workspace
     token: ${{ secrets.MOGENIUS_TOKEN }}
 ```
 
@@ -42,6 +44,7 @@ curl -X POST "https://platform-api.mogenius.com/cluster/workload/admin/set-image
 -H "Content-Type: application/json" \
 -d '{
   "kind": "Deployment",
+  "apiKind": "workspace",
   "namespace": "default",
   "resourceName": "my-web-app",
   "containerName": "nginx",
