@@ -4,11 +4,11 @@ description: 'Automate your release process with mogenius'
 # Declare inputs
 inputs:
   dev:
-    description: 'Whether to use the dev API or not'
+    description: 'Whether to use the dev API or not [ true | false ] (default: false)'
     required: false
     default: 'false'
   kind:
-    description: 'Kubernetes Resource Type. Valid types are [Deployment | Daemonset | Statefulset | Replicaset]'
+    description: 'Kubernetes Resource Type. Valid types are [Deployment | Daemonset | Statefulset | Replicaset | Job | Cronjob ] (default: Deployment)'
     required: true
     default: 'Deployment'
   namespace:
@@ -23,6 +23,10 @@ inputs:
   image:
     description: 'The image you want to change to'
     required: true
+  keyKind:
+    description: 'The kind of the API key [ cluster | workspace ] (default: workspace)'
+    required: true
+    default: 'workspace'
   token:
     description: 'The API key for the mogenius API'
     required: true

@@ -40038,13 +40038,19 @@ const github = __nccwpck_require__(3228);
 const axios = __nccwpck_require__(7269);
 
 try {
-  const dev = core.getInput("dev");
-  const kind = core.getInput("kind");
+  const dev = core.getInput("dev"); // true | false
+  const keyKind = core.getInput("keyKind"); // cluster | workspace
+  const kind = core.getInput("kind"); // Deployment | Statefulset | Daemonset | Job | Cronjob
   const namespace = core.getInput("namespace");
   const resourceName = core.getInput("resourceName");
   const containerName = core.getInput("containerName");
   const image = core.getInput("image");
   const token = core.getInput("token");
+
+  const API_URL = dev === "true" ? "https://platform-api.dev.mogenius.com" : "https://platform-api.mogenius.com";
+  const API_CLUSTER_URL = API_URL + "/cluster/workload/admin/set-image";
+  const API_WORKSPACE_URL = API_URL + "/workspace/workload/set-image";
+  const API_URL_COMPLETED = keyKind === "cluster" ? API_CLUSTER_URL : API_WORKSPACE_URL;
 
   const requestObject = {
     kind: kind,
@@ -40054,15 +40060,8 @@ try {
     image: image,
   };
 
-  var url =
-    "https://platform-api.mogenius.com/cluster/workload/admin/set-image";
-  if (dev === "true") {
-    url =
-      "https://platform-api.dev.mogenius.com/cluster/workload/admin/set-image";
-  }
-
   axios
-    .post(url, requestObject, {
+    .post(API_URL_COMPLETED, requestObject, {
       headers: {
         Authorization: token,
         "Content-Type": "application/json",
