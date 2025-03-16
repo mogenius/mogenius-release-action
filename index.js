@@ -11,6 +11,7 @@ try {
   const containerName = core.getInput("containerName");
   const image = core.getInput("image");
   const token = core.getInput("token");
+  const debug = core.getInput("debug");
 
   const API_URL = dev === "true" ? "https://platform-api.dev.mogenius.com" : "https://platform-api.mogenius.com";
   const API_CLUSTER_URL = API_URL + "/cluster/workload/admin/set-image";
@@ -24,6 +25,12 @@ try {
     containerName: containerName,
     image: image,
   };
+
+  if (debug === 'true') {
+    console.log(API_URL_COMPLETED);
+    console.log(JSON.stringify(requestObject));
+    console.log('Auth: ' + token);
+  }
 
   axios
     .post(API_URL_COMPLETED, requestObject, {
