@@ -30,6 +30,10 @@ inputs:
   token:
     description: 'The API key for the mogenius API'
     required: true
+  debug:
+    description: 'Print input parameters for debugging'
+    required: false
+    default: false
 
 runs:
   using: 'node20'
