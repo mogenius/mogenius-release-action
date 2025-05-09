@@ -53,6 +53,11 @@ try {
         var errMsg = "Your API token is invalid. It might have expired or the scope might be insufficient.";
         console.log(errMsg);
         core.setFailed(errMsg);
+      } else if (err.response && err.response.status === 404) {
+        const errorData = err.response.data;
+        const errorMsg = errorData.message ? errorData.message : JSON.stringify(errorData);
+        core.warning(errorMsg);
+        console.log(errorMsg);
       } else if (err.response) {
         // Access the error message correctly
         const errorData = err.response.data;
