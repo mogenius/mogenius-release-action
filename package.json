@@ -2,15 +2,14 @@
   "name": "mogenius-release-action",
   "version": "1.0.0",
   "description": "Github Action to automate your release-cycle using mogenius",
-  "main": "index.js",
-  "type": "module",
+  "main": "index.mjs",
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@actions/github": "^9.0.0",
     "axios": "^1.9.0"
   },
   "scripts": {
-    "build": "npx ncc build index.js -o dist"
+    "build": "npx ncc build index.mjs -o dist"
   },
   "repository": {
     "type": "git",
