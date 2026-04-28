@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Github Action to automate your release-cycle using mogenius",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "@actions/core": "^3.0.0",
     "@actions/github": "^9.0.0",
