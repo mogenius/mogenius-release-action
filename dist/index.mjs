@@ -46101,7 +46101,7 @@ axios.default = axios;
 try {
   const dev = getInput("dev"); // true | false
   const keyKind = getInput("keyKind"); // cluster | workspace
-  const kind = getInput("kind"); // Deployment | Statefulset | Daemonset | Job | Cronjob
+  const kind = getInput("kind"); // Deployment | Statefulset | Daemonset | Job | Cronjob
   const namespace = getInput("namespace");
   const resourceName = getInput("resourceName");
   const containerName = getInput("containerName");

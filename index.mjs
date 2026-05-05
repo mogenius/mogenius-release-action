@@ -5,7 +5,7 @@ import axios from "axios";
 try {
   const dev = core.getInput("dev"); // true | false
   const keyKind = core.getInput("keyKind"); // cluster | workspace
-  const kind = core.getInput("kind"); // Deployment | Statefulset | Daemonset | Job | Cronjob
+  const kind = core.getInput("kind"); // Deployment | Statefulset | Daemonset | Job | Cronjob
   const namespace = core.getInput("namespace");
   const resourceName = core.getInput("resourceName");
   const containerName = core.getInput("containerName");
