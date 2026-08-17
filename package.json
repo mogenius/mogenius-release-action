@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/mogenius/mogenius-release-action#readme",
   "devDependencies": {
-    "@vercel/ncc": "^0.38.3"
+    "@vercel/ncc": "^0.45.0"
   }
 }
